@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Box Model: Margin vs Padding</title>
+  <style>
+    :root {
+      --card-width: 280px;
+      --card-gap: 24px;
+      --card-radius: 16px;
+      --border-color: #d2d7dd;
+      --bg-soft: #f7f9fc;
+      --accent: #2f6bed;
+      --text: #1f2937;
+      --muted: #6b7280;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      background: linear-gradient(180deg, #eef4ff 0%, #ffffff 100%);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+    }
+
+    .grid {
+      display: grid;
+      gap: var(--card-gap);
+      grid-template-columns: repeat(auto-fit, minmax(var(--card-width), 1fr));
+      width: min(1100px, 100%);
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--border-color);
+      border-radius: var(--card-radius);
+      box-shadow: 0 18px 50px rgba(50, 72, 107, 0.08);
+      overflow: hidden;
+    }
+
+    .card__inner {
+      padding: 20px;
+    }
+
+    .card__title {
+      margin: 0 0 12px;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .card__label {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .card__example {
+      border: 1px dashed #a3b0d5;
+      border-radius: 12px;
+      position: relative;
+      min-height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: var(--text);
+      background: var(--bg-soft);
+    }
+
+    .example-box {
+      width: 160px;
+      height: 100px;
+      border: 2px solid #2f6bed;
+      background: #ffffff;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      font-weight: 600;
+      color: #2f6bed;
+    }
+
+    .example-box--margin {
+      margin: 20px;
+    }
+
+    .example-box--padding {
+      padding: 20px;
+    }
+
+    .example-box--margin-padding {
+      margin: 16px;
+      padding: 16px;
+      width: auto;
+      min-width: 140px;
+      min-height: 76px;
+    }
+
+    .annotation {
+      position: absolute;
+      left: 16px;
+      top: 16px;
+      background: rgba(255,255,255,0.9);
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid #dfe3eb;
+      font-size: 0.78rem;
+      color: #566274;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid">
+    <article class="card">
+      <div class="card__inner">
+        <h2 class="card__title">Example 1: Margin Outside the Card</h2>
+        <p class="card__label">Margin creates space outside the element’s border.</p>
+        <div class="card__example">
+          <div class="annotation">Container space</div>
+          <div class="example-box example-box--margin">Margin</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card__inner">
+        <h2 class="card__title">Example 2: Padding Inside the Card</h2>
+        <p class="card__label">Padding increases space between the border and content.</p>
+        <div class="card__example">
+          <div class="annotation">Content area</div>
+          <div class="example-box example-box--padding">Padding</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card__inner">
+        <h2 class="card__title">Example 3: Margin + Padding Together</h2>
+        <p class="card__label">Margin separates the card from others, padding keeps the content clear inside.</p>
+        <div class="card__example">
+          <div class="annotation">Outer and inner spacing</div>
+          <div class="example-box example-box--margin-padding">Margin + Padding</div>
+        </div>
+      </div>
+    </article>
+  </div>
+</body>
+</html>
